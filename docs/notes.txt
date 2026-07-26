@@ -1,0 +1,115 @@
+=== TAILWIND CSS - NOTAS DE APRENDIZAJE ===
+
+--- FLEXBOX ---
+flex         → activa el modo flex (los elementos hijos se colocan en fila/columna)
+flex-row     → los elementos hijos se colocan en fila horizontal
+flex-col     → los elementos hijos se colocan en columna vertical
+items-center → centra los elementos verticalmente dentro del contenedor
+gap-12       → espacio entre los elementos hijos (gap = separación)
+
+--- RESPONSIVE (md: = a partir de tablet/escritorio) ---
+flex-col md:flex-row → en móvil columna, en escritorio fila
+w-32 md:w-64         → en móvil ancho pequeño, en escritorio ancho grande
+
+--- TAMAÑOS (w = width, ancho) ---
+w-32  → 128px de ancho
+w-64  → 256px de ancho
+w-full → 100% del contenedor
+
+--- ESPACIADO ---
+mb-24 → margin-bottom grande (separación hacia abajo)
+py-24 → padding arriba y abajo
+px-6  → padding izquierda y derecha
+
+--- TAMAÑOS DE IMAGEN ---
+w-auto      → el ancho se ajusta automáticamente según la proporción
+h-64        → altura fija de 256px (móvil)
+md:h-96     → altura fija de 384px (escritorio)
+max-h       → altura máxima, el elemento no crece más de ese valor
+
+IMPORTANTE: cuando varias imágenes tienen distinto tamaño original,
+usar h-fija + w-auto en vez de w-fija para que todas se vean igual de altas.
+
+
+--- GRID (cuadrícula) ---
+grid                    → activa el modo cuadrícula
+grid-cols-1             → 1 columna
+md:grid-cols-2          → 2 columnas a partir de tablet
+lg:grid-cols-3          → 3 columnas a partir de escritorio
+gap-8                   → espacio entre celdas del grid
+
+--- OTROS ---
+justify-center          → centra horizontalmente dentro del contenedor
+flex-1                  → el elemento ocupa todo el espacio disponible
+shadow-2xl              → sombra grande debajo del elemento
+rounded-3xl             → bordes muy redondeados
+hover:bg-white/10       → al pasar el ratón, fondo blanco con 10% opacidad
+transition-all          → las animaciones CSS se aplican suavemente
+duration-300            → la transición dura 300ms
+
+--- GRADIENTES ---
+linear-gradient(to bottom, color1, color2, color3)  → gradiente vertical de arriba a abajo
+style="background: ..."   → cuando Tailwind no soporta el valor exacto, usamos CSS inline
+
+--- RESPONSIVE EN ESPACIADO Y TEXTO ---
+p-4 md:p-8          → padding pequeño en móvil, grande en escritorio
+text-sm md:text-xl  → texto pequeño en móvil, grande en escritorio
+
+REGLA GENERAL: cualquier clase de Tailwind se puede hacer responsive
+añadiendo md: delante para que solo aplique en escritorio.
+Sin prefijo = aplica en móvil primero (mobile-first).
+
+--- SECCIÓN CTA (Call To Action) ---
+inline-flex         → flex pero en línea, no ocupa todo el ancho
+py-32               → padding vertical muy grande, para secciones destacadas
+max-w-xl mx-auto    → limita el ancho del texto y lo centra
+
+--- FOOTER ---
+border-t            → línea horizontal arriba del elemento
+border-white/10     → color de la línea blanco con 10% opacidad (sutil)
+text-sm             → texto pequeño
+text-gray-600       → gris más oscuro, para texto secundario como el copyright
+
+=== GSAP - NOTAS DE APRENDIZAJE ===
+
+--- CONCEPTOS BÁSICOS ---
+gsap.from(elemento, propiedades)  → anima DESDE el estado que describes HASTA el estado normal
+gsap.to(elemento, propiedades)    → anima DESDE el estado normal HASTA el estado que describes
+
+--- PROPIEDADES ---
+opacity: 0      → empieza invisible y aparece
+y: 60           → empieza 60px abajo y sube (negativo = desde arriba)
+x: -60          → empieza 60px a la izquierda y va a la derecha
+duration: 1     → duración en segundos
+delay: 0.3      → espera X segundos antes de empezar
+ease: "power3.out"  → empieza rápido y termina suave
+
+--- PLUGINS ---
+gsap.registerPlugin(ScrollTrigger)  → activa el plugin para detectar scroll
+ScrollTrigger                       → dispara animaciones cuando el elemento es visible en pantalla
+
+--- SELECTORES ---
+".hero-logo"    → selecciona por clase CSS (igual que en CSS)
+"#seccion"      → selecciona por ID
+
+--- SCROLL TRIGGER ---
+scrollTrigger: { trigger: ".elemento", start: "top 80%" }
+              → dispara la animación cuando el elemento llega al 80% de la pantalla
+
+stagger: 0.1  → cada elemento entra con 0.1 segundos de diferencia entre ellos
+              → permite que las cards entren una a una en vez de todas a la vez
+
+once: true                          → la animación solo se ejecuta una vez
+toggleActions: "play none none none" → cuando el elemento entra en pantalla: reproduce, 
+                                       y no hace nada más en ningún otro evento de scroll
+
+--- ORDER (orden de elementos) ---
+order-first          → coloca el elemento primero visualmente en móvil
+order-last           → coloca el elemento último visualmente en móvil
+md:order-first       → coloca el elemento primero visualmente en escritorio
+md:order-last        → coloca el elemento último visualmente en escritorio
+
+--- GSAP AVANZADO ---
+gsap.utils.toArray(".clase")   → selecciona TODOS los elementos con esa clase como array
+.forEach(block => { ... })     → recorre cada elemento y le aplica la animación individualmente
+block.querySelector(".clase")  → busca un elemento hijo dentro de un bloque concreto

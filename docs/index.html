@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoniFit — Tu entrenador personal en el bolsillo</title>
+    <meta name="description"
+        content="BoniFit es la app de fitness definitiva. Entrena, evoluciona y alcanza tus metas.">
+    <meta property="og:title" content="Bonifit - Tu entrenador personal en el bolsillo">
+    <meta property="og:description"
+        content="BoniFit es la app de fitness definitiva. Rutinas, Ejercicios, Rutinas, progreso, nutrición y suplementos... - todo en una sola app.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="logo_circular.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3B30',
+                        dark: '#1a1a1a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+
+
+<body class="bg-dark text-white font-sans">
+
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-dark/80 backdrop-blur-md border-b border-white/10">
+        <a href="#"><img src="logo.png" alt="BoniFit" class="w-10 h-10"></a>
+        <div class="hidden md:flex items-center gap-8 text-gray-400 font-semibold absolute left-1/2 -translate-x-1/2">
+            <a href="#features" class="hover:text-white transition-colors duration-200">Características</a>
+            <a href="#screenshots" class="hover:text-white transition-colors duration-200">Capturas</a>
+            <a href="#download" class="hover:text-white transition-colors duration-200">Descargar</a>
+        </div>
+        <div class="flex items-center gap-3 ml-auto">
+            <button id="menu-btn" class="md:hidden text-white" onclick="toggleMenu()">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+            <a href="#download"
+                class="md:flex hidden bg-primary hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
+                Descargar gratis
+            </a>
+
+        </div>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu"
+        class="hidden fixed top-[72px] left-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex-col gap-6 md:hidden">
+        <a href="#features" onclick="toggleMenu()"
+            class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Características</a>
+        <a href="#screenshots" onclick="toggleMenu()"
+            class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Capturas</a>
+        <a href="#download" onclick="toggleMenu()"
+            class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Descargar</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32"
+        style="background: linear-gradient(to bottom, #1a1a1a, #3b0a0a, #1a1a1a);">
+        <img src="logo.png" alt="BoniFit Logo" class="w-32 h-32 mb-8 hero-logo">
+        <h1 class="text-5xl md:text-7xl font-black mb-4 hero-title">
+            Entrena.<br><span class="text-primary">Evoluciona.</span><br>Domina.
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-xl mb-10 hero-subtitle">
+            Tu entrenador personal en el bolsillo. Rutinas, progreso y nutrición — todo en una sola app.
+        </p>
+        <a href="#"
+            class="bg-primary hover:bg-red-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 hero-btn">
+            Descargar gratis
+        </a>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-24 px-6"
+        style="background: linear-gradient(to bottom, #1a1a1a, #222222, #1a1a1a);">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16">
+                Todo lo que necesitas,<br><span class="text-primary">en una sola app</span>
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="dumbbell" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-base md:text-xl font-bold mb-2">Rutinas personalizadas</h3>
+                    <p class="text-gray-400">Crea y gestiona tus entrenamientos adaptados a tus objetivos.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="library" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-base md:text-xl font-bold mb-2">Catálogo de ejercicios</h3>
+                    <p class="text-gray-400">Más de 50 ejercicios con instrucciones detalladas y videos guía.</p>
+                </div>
+
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="bot" class="w-10 h-10"></i>
+                    </div>
+
+                    <h3 class="text-base md:text-xl font-bold mb-2">IA Coach</h3>
+                    <p class="text-gray-400">Rutinas generadas por inteligencia artificial según tu nivel y metas.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="trending-up" class="w-10 h-10"></i>
+                    </div>
+
+                    <h3 class="text-base md:text-xl font-bold mb-2">Evolución</h3>
+                    <p class="text-gray-400">Registra tu progreso físico y visualiza cómo mejoras con el tiempo.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="utensils" class="w-10 h-10"></i>
+                    </div>
+
+                    <h3 class="text-base md:text-xl font-bold mb-2">Recetas</h3>
+                    <p class="text-gray-400">Descubre recetas saludables adaptadas a tus objetivos fitness.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="pill" class="w-10 h-10"></i>
+                    </div>
+
+                    <h3 class="text-base md:text-xl font-bold mb-2">Suplementos</h3>
+                    <p class="text-gray-400">Guía completa de suplementación para maximizar tus resultados.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="medal" class="w-10 h-10"></i>
+                    </div>
+
+                    <h3 class="text-base md:text-xl font-bold mb-2">Medallas</h3>
+                    <p class="text-gray-400">Consigue logros y mantén la motivación con cada entrenamiento.</p>
+                </div>
+
+                <div
+                    class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
+                    <div class="mb-4 text-primary">
+                        <i data-lucide="trophy" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-base md:text-xl font-bold mb-2">Récords personales</h3>
+                    <p class="text-gray-400">Supera tus marcas y celebra cada nuevo récord personal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16">
+                Descubre la <span class="text-primary">experiencia</span>
+            </h2>
+
+            <!-- Pantalla 1: Inicio -->
+            <div class="flex flex-col md:flex-row  items-center gap-6 justify-center mb-24 screenshot-block">
+                <div class="flex-1 screenshot-text">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block ">Pantalla
+                        principal</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Tu centro de control</h3>
+                    <p class="text-gray-400 text-lg mb-6">Accede de un vistazo a tus rutinas activas,
+                        recetas,
+                        suplementos y
+                        mucho más.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Rutinas activas al instante</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Accesos rápidos a todas las secciones</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Frase motivacional diaria</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex justify-center screenshot-img">
+                    <img src="screenshots/inicio.jpg" alt="Pantalla inicio"
+                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                </div>
+
+            </div>
+
+            <!-- Pantalla 2: Rutinas -->
+            <div class="flex flex-col md:flex-row  items-center gap-6 justify-center mb-24 screenshot-block">
+                <div class="flex-1 order-first md:order-last screenshot-text">
+                    <span
+                        class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">Entrenamientos</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Tus rutinas, a tu manera</h3>
+                    <p class="text-gray-400 text-lg mb-6">Crea rutinas personalizadas, actívalas y lleva el control de
+                        cada
+                        entrenamiento. Adaptadas a tu nivel y objetivos.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Crea rutinas desde cero</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Activa y gestiona tus entrenamientos</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Adaptadas a tu nivel y objetivos</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex justify-center order-last md:order-first screenshot-img">
+                    <img src="screenshots/rutinas.jpg" alt="Pantalla rutinas"
+                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                </div>
+            </div>
+
+            <!-- Pantalla 3: IA Coach -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-24 screenshot-block">
+                <div class="flex-1 screenshot-text">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">Inteligencia
+                        artificial</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Tu entrenador con <span
+                            class="text-primary">IA</span>
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-6">BoniCoach responde tus dudas sobre ejercicios, rutinas y
+                        nutrición. Disponible 24/7.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Respuestas personalizadas para ti</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Consejos de nutrición y ejercicio</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Disponible las 24 horas</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex justify-center screenshot-img">
+                    <img src="screenshots/ia_coach.jpg" alt="Pantalla IA-Coach"
+                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                </div>
+            </div>
+
+            <!-- Pantalla 4: Evolución -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-24 screenshot-block">
+                <div class="flex-1 order-first md:order-last screenshot-text">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">Progreso</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Visualiza tu <span
+                            class="text-primary">progreso</span>
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-6">Registra tu peso, grasa corporal e IMC. Ve cómo evolucionas
+                        semana
+                        a semana.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Gráficas detalladas de evolución</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Control de peso y grasa corporal</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Cálculo automático del IMC</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex justify-center order-last md:order-first screenshot-img">
+                    <img src="screenshots/evolucion.jpg" alt="Pantalla Evolución"
+                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                </div>
+            </div>
+
+            <!-- Pantalla 5: Biblioteca -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-24 screenshot-block">
+                <div class="flex-1 screenshot-text">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">Ejercicios</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Más de 50 <span
+                            class="text-primary">ejercicios</span> a
+                        tu alcance
+                    </h3>
+                    <p class="text-gray-400 text-lg mb-6">Explora nuestra biblioteca completa con videos de ejecución y
+                        filtros por músculo.</p>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Videos de ejecución correcta</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Filtros por grupo muscular</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-primary"></i>
+                            Guarda tus ejercicios favoritos</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex justify-center screenshot-img">
+                    <img src="screenshots/biblioteca.jpg" alt="Pantalla Ejercicios"
+                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="how-it-works" class="py-24 px-6"
+        style=" background: linear-gradient(to bottom, #1a1a1a, #222222, #1a1a1a);">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16">
+                Empieza en <span class="text-primary">3 pasos</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+                <div class="text-center step-card">
+                    <div
+                        class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
+                        1</div>
+                    <div class="mb-4 flex justify-center text-primary">
+                        <i data-lucide="download" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Descárgate la app</h3>
+                    <p class="text-gray-400">Disponible gratis en Google Play. Sin tarjeta, sin compromisos.</p>
+                </div>
+
+                <div class="text-center step-card">
+                    <div
+                        class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
+                        2</div>
+                    <div class="mb-4 flex justify-center text-primary">
+                        <i data-lucide="user-round" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Crea tu perfil</h3>
+                    <p class="text-gray-400">Indica tu objetivo, nivel y preferencias. BoniFit se adapta a ti.</p>
+                </div>
+
+                <div class="text-center step-card">
+                    <div
+                        class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
+                        3</div>
+                    <div class="mb-4 flex justify-center text-primary">
+                        <i data-lucide="flame" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Empieza a entrenar</h3>
+                    <p class="text-gray-400">Accede a tus rutinas, el IA Coach y todo el contenido desde el primer
+                        día.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 px-6" style="background: linear-gradient(to bottom, #1a1a1a, #222222, #1a1a1a);">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16">Preguntas <span
+                    class="text-primary">frecuentes</span>
+            </h2>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿Es gratis?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    Sí, BoniFit es completamente gratis para descargar y usar. Sin tarjeta, sin compromisos.
+                </div>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿Qué es BoniCoach?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    Es nuestro asistente de inteligencia artificial disponible 24/7 para resolver tus dudas sobre
+                    entrenamientos, nutrición y suplementación de forma personalizada.
+                </div>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿Para qué nivel es BoniFit?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    Para todos los niveles. Tanto si empiezas desde cero como si llevas años entrenando, BoniFit se
+                    adapta a tus objetivos y ritmo.
+                </div>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿Necesito equipamiento o gimnasio?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    No es obligatorio. Puedes encontrar ejercicios tanto para entrenar en casa como en el gimnasio.
+                </div>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿La app hace seguimiento de mi progreso?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    Sí, puedes registrar tu peso, grasa corporal e IMC y ver gráficas detalladas de tu evolución semana
+                    a semana.
+                </div>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <button onclick="toggleFaq(this)"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
+                    <span>¿Es seguro registrarme?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
+                    Sí, tus datos están protegidos y nunca se comparten con terceros. Cumplimos con la política de
+                    privacidad vigente.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCARGA -->
+    <section id="download" class="py-32 px-6 text-center"
+        style="background: linear-gradient(to bottom, #1a1a1a, #3b0a0a, #1a1a1a);">
+        <h2 class="text-4xl md:text-6xl font-black mb-4 download-title">
+            Tu mejor versión<br><span class="text-primary">empieza hoy.</span>
+        </h2>
+        <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+            Gratis · Sin compromisos · Sin tarjeta
+        </p>
+        <a href="#"
+            class="inline-flex items-center gap-3 bg-white text-dark font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-200 transition-all duration-300 download-btn">
+            <i data-lucide="play" class="w-6 h-6 text-primary"></i>
+            Proximamente en Google Play
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-white/10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <a href="#"><img src="logo.png" alt="BoniFit" class="w-10 h-10"></a>
+            <div class="flex items-center gap-6 text-gray-400 text-sm">
+                <a href="privacy_policy.html" class="hover:text-white transition-colors duration-200">Política de
+                    privacidad</a>
+                <a href="terms_and_conditions.html" class="hover:text-white transition-colors duration-200">Términos de
+                    servicio</a>
+            </div>
+            <p class="text-gray-600 text-sm">© 2026 BoniFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // HERO
+        gsap.from(".hero-logo", { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
+        gsap.from(".hero-title", { opacity: 0, y: 60, duration: 1, delay: 0.3, ease: "power3.out" });
+        gsap.from(".hero-subtitle", { opacity: 0, y: 40, duration: 1, delay: 0.6, ease: "power3.out" });
+        gsap.from(".hero-btn", { opacity: 0, y: 30, duration: 1, delay: 0.9, ease: "power3.out" });
+
+        // FEATURES
+        gsap.from(".feature-card", {
+            scrollTrigger: {
+                trigger: "#features",
+                start: "top bottom",
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: "power3.out",
+        });
+
+        // SCREENSHOTS
+        gsap.utils.toArray(".screenshot-block").forEach(block => {
+            const text = block.querySelector(".screenshot-text");
+            const img = block.querySelector(".screenshot-img");
+
+            gsap.from(text, {
+                scrollTrigger: { trigger: block, start: "top 80%" },
+                opacity: 0,
+                x: -60,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+
+            gsap.from(img, {
+                scrollTrigger: { trigger: block, start: "top 80%" },
+                opacity: 0,
+                x: 60,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+        });
+
+        // CÓMO FUNCIONA
+        gsap.from(".step-card", {
+            scrollTrigger: {
+                trigger: "#how-it-works",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // DESCARGA
+        gsap.from(".download-title", {
+            scrollTrigger: { trigger: "#download", start: "top 80%" },
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            ease: "power3.out"
+        });
+        gsap.from(".download-btn", {
+            scrollTrigger: { trigger: "#download", start: "top 80%" },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+    </script>
+
+</body>
+
+<script>
+    //Abre y cierra el menú móvil alternando entre visible (flex) y oculto (hidden)
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    }
+
+    //Alterna la visibilidad de la respuesta al pulsar la pregunta
+    function toggleFaq(btn) {
+        // Selecciona el div de la respuesta, esta justo despues del boton
+        const answer = btn.nextElementSibling;
+        // Selecciona el icono de la flecha dentro del botón
+        const icon = btn.querySelector('[data-lucide="chevron-down"]');
+        // Muestra u oculta la respuesta alternando la clase hidden
+        answer.classList.toggle('hidden');
+        // Rota la flecha 180º si esta abierto, o la vuelve a 0º si esta cerrado
+        icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+</script>
+
+
+</html>
