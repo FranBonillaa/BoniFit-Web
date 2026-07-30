@@ -51,6 +51,21 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Oculta el triangulito que <details> muestra por defecto */
+        summary {
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Gira la flecha 180º cuando la pregunta está abierta */
+        details[open]>summary svg {
+            transform: rotate(180deg);
+        }
+    </style>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -403,68 +418,81 @@
                     class="text-primary">frecuentes</span>
             </h2>
             <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿Es gratis?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    Sí, BoniFit es completamente gratis para descargar y usar. Sin tarjeta, sin compromisos.
-                </div>
-            </div>
-            <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿Qué es BoniCoach?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    Es nuestro asistente de inteligencia artificial disponible 24/7 para resolver tus dudas sobre
-                    entrenamientos, nutrición y suplementación de forma personalizada.
-                </div>
-            </div>
-            <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿Para qué nivel es BoniFit?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    Para todos los niveles. Tanto si empiezas desde cero como si llevas años entrenando, BoniFit se
-                    adapta a tus objetivos y ritmo.
-                </div>
-            </div>
-            <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿Necesito equipamiento o gimnasio?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    No es obligatorio. Puedes encontrar ejercicios tanto para entrenar en casa como en el gimnasio.
-                </div>
-            </div>
-            <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿La app hace seguimiento de mi progreso?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    Sí, puedes registrar tu peso, grasa corporal e IMC y ver gráficas detalladas de tu evolución semana
-                    a semana.
-                </div>
-            </div>
-            <div class="space-y-4" id="faq-list">
-                <button onclick="toggleFaq(this)"
-                    class="w-full flex items-center justify-between px-6 py-5 text-left font-bold text-lg hover:bg-white/5 transition-colors duration-200">
-                    <span>¿Es seguro registrarme?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-5 text-gray-400 border-white/10 pt-4 leading-relaxed">
-                    Sí, tus datos están protegidos y nunca se comparten con terceros. Cumplimos con la política de
-                    privacidad vigente.
-                </div>
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿Es gratis?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        Sí, BoniFit es completamente gratis para descargar y usar. Sin tarjeta, sin compromisos.
+                    </div>
+                </details>
+
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿Qué es BoniCoach?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        Es nuestro asistente de inteligencia artificial disponible 24/7 para resolver tus dudas sobre
+                        entrenamientos, nutrición y suplementación de forma personalizada.
+                    </div>
+                </details>
+
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿Para qué nivel es BoniFit?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        Para todos los niveles. Tanto si empiezas desde cero como si llevas años entrenando, BoniFit se
+                        adapta a tus objetivos y ritmo.
+                    </div>
+                </details>
+
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿Necesito equipamiento o gimnasio?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        No es obligatorio. Puedes encontrar ejercicios tanto para entrenar en casa como en el gimnasio.
+                    </div>
+                </details>
+
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿La app hace seguimiento de mi progreso?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        Sí, puedes registrar tu peso, grasa corporal e IMC y ver gráficas detalladas de tu evolución
+                        semana a semana.
+                    </div>
+                </details>
+
+                <details class="rounded-xl overflow-hidden">
+                    <summary
+                        class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
+                        <span>¿Es seguro registrarme?</span>
+                        <i data-lucide="chevron-down"
+                            class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
+                        Sí, tus datos están protegidos y nunca se comparten con terceros. Cumplimos con la política de
+                        privacidad vigente.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
@@ -583,18 +611,6 @@
         const menu = document.getElementById('mobile-menu');
         menu.classList.toggle('hidden');
         menu.classList.toggle('flex');
-    }
-
-    //Alterna la visibilidad de la respuesta al pulsar la pregunta
-    function toggleFaq(btn) {
-        // Selecciona el div de la respuesta, esta justo despues del boton
-        const answer = btn.nextElementSibling;
-        // Selecciona el icono de la flecha dentro del botón
-        const icon = btn.querySelector('[data-lucide="chevron-down"]');
-        // Muestra u oculta la respuesta alternando la clase hidden
-        answer.classList.toggle('hidden');
-        // Rota la flecha 180º si esta abierto, o la vuelve a 0º si esta cerrado
-        icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 </script>
 
