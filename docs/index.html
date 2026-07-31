@@ -73,7 +73,7 @@
 
 
 
-<body class="bg-dark text-white font-sans">
+<body class="bg-dark text-white font-sans overflow-x-hidden">
 
     <nav
         class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-dark/80 backdrop-blur-md border-b border-white/10">
@@ -524,95 +524,101 @@
                 <a href="terms_and_conditions.html" class="hover:text-white transition-colors duration-200">Términos de
                     servicio</a>
             </div>
-            <p class="text-gray-600 text-sm">© 2026 BoniFit. Todos los derechos reservados.</p>
+            <p class="text-gray-500 text-sm">© 2026 BoniFit. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>lucide.createIcons();</script>
+
+    <script>
+        //Abre y cierra el menú móvil alternando entre visible (flex) y oculto (hidden)
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+    </script>
+
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // HERO
-        gsap.from(".hero-logo", { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
-        gsap.from(".hero-title", { opacity: 0, y: 60, duration: 1, delay: 0.3, ease: "power3.out" });
-        gsap.from(".hero-subtitle", { opacity: 0, y: 40, duration: 1, delay: 0.6, ease: "power3.out" });
-        gsap.from(".hero-btn", { opacity: 0, y: 30, duration: 1, delay: 0.9, ease: "power3.out" });
+        // matchMedia ejecuta las animaciones SOLO si el usuario no ha pedido
+        // reducir el movimiento en las opciones de su sistema operativo.
+        // Si lo ha pedido, todo aparece ya colocado, sin animar.
+        gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 
-        // FEATURES
-        gsap.from(".feature-card", {
-            scrollTrigger: {
-                trigger: "#features",
-                start: "top bottom",
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            ease: "power3.out",
-        });
+            // HERO
+            gsap.from(".hero-logo", { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
+            gsap.from(".hero-title", { opacity: 0, y: 60, duration: 1, delay: 0.3, ease: "power3.out" });
+            gsap.from(".hero-subtitle", { opacity: 0, y: 40, duration: 1, delay: 0.6, ease: "power3.out" });
+            gsap.from(".hero-btn", { opacity: 0, y: 30, duration: 1, delay: 0.9, ease: "power3.out" });
 
-        // SCREENSHOTS
-        gsap.utils.toArray(".screenshot-block").forEach(block => {
-            const text = block.querySelector(".screenshot-text");
-            const img = block.querySelector(".screenshot-img");
-
-            gsap.from(text, {
-                scrollTrigger: { trigger: block, start: "top 80%" },
+            // FEATURES
+            gsap.from(".feature-card", {
+                scrollTrigger: {
+                    trigger: "#features",
+                    start: "top bottom",
+                },
                 opacity: 0,
-                x: -60,
-                duration: 0.8,
+                y: 30,
+                duration: 0.6,
+                ease: "power3.out",
+            });
+
+            // SCREENSHOTS
+            gsap.utils.toArray(".screenshot-block").forEach(block => {
+                const text = block.querySelector(".screenshot-text");
+                const img = block.querySelector(".screenshot-img");
+
+                gsap.from(text, {
+                    scrollTrigger: { trigger: block, start: "top 80%" },
+                    opacity: 0,
+                    x: -60,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+
+                gsap.from(img, {
+                    scrollTrigger: { trigger: block, start: "top 80%" },
+                    opacity: 0,
+                    x: 60,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+
+            // CÓMO FUNCIONA
+            gsap.from(".step-card", {
+                scrollTrigger: {
+                    trigger: "#how-it-works",
+                    start: "top 80%",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.6,
+                stagger: 0.2,
                 ease: "power3.out"
             });
 
-            gsap.from(img, {
-                scrollTrigger: { trigger: block, start: "top 80%" },
+            // DESCARGA
+            gsap.from(".download-title", {
+                scrollTrigger: { trigger: "#download", start: "top 80%" },
                 opacity: 0,
-                x: 60,
+                y: 50,
                 duration: 0.8,
                 ease: "power3.out"
             });
-        });
-
-        // CÓMO FUNCIONA
-        gsap.from(".step-card", {
-            scrollTrigger: {
-                trigger: "#how-it-works",
-                start: "top 80%",
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: "power3.out"
-        });
-
-        // DESCARGA
-        gsap.from(".download-title", {
-            scrollTrigger: { trigger: "#download", start: "top 80%" },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            ease: "power3.out"
-        });
-        gsap.from(".download-btn", {
-            scrollTrigger: { trigger: "#download", start: "top 80%" },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            delay: 0.3,
-            ease: "power3.out"
+            gsap.from(".download-btn", {
+                scrollTrigger: { trigger: "#download", start: "top 80%" },
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 0.3,
+                ease: "power3.out"
+            });
         });
     </script>
 
 </body>
-
-<script>
-    //Abre y cierra el menú móvil alternando entre visible (flex) y oculto (hidden)
-    function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-    }
-</script>
-
 
 </html>
