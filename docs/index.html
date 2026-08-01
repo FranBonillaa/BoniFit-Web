@@ -85,8 +85,9 @@
             <a href="#download" class="hover:text-white transition-colors duration-200">Descargar</a>
         </div>
         <div class="flex items-center gap-3 ml-auto">
-            <button id="menu-btn" class="md:hidden text-white" onclick="toggleMenu()">
-                <i data-lucide="menu" class="w-7 h-7"></i>
+            <button id="menu-btn" type="button" aria-label="Abrir menú" aria-controls="mobile-menu"
+                aria-expanded="false" class="md:hidden text-white" onclick="toggleMenu()">
+                <i aria-hidden="true" data-lucide="menu" class="w-7 h-7"></i>
             </button>
             <a href="#download"
                 class="md:flex hidden bg-primary hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
@@ -137,7 +138,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="dumbbell" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="dumbbell" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-base md:text-xl font-bold mb-2">Rutinas personalizadas</h3>
                     <p class="text-gray-400">Crea y gestiona tus entrenamientos adaptados a tus objetivos.</p>
@@ -146,7 +147,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="library" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="library" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-base md:text-xl font-bold mb-2">Catálogo de ejercicios</h3>
                     <p class="text-gray-400">Más de 50 ejercicios con instrucciones detalladas y videos guía.</p>
@@ -156,7 +157,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="bot" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="bot" class="w-10 h-10"></i>
                     </div>
 
                     <h3 class="text-base md:text-xl font-bold mb-2">IA Coach</h3>
@@ -166,7 +167,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="trending-up" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="trending-up" class="w-10 h-10"></i>
                     </div>
 
                     <h3 class="text-base md:text-xl font-bold mb-2">Evolución</h3>
@@ -176,7 +177,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="utensils" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="utensils" class="w-10 h-10"></i>
                     </div>
 
                     <h3 class="text-base md:text-xl font-bold mb-2">Recetas</h3>
@@ -186,7 +187,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="pill" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="pill" class="w-10 h-10"></i>
                     </div>
 
                     <h3 class="text-base md:text-xl font-bold mb-2">Suplementos</h3>
@@ -196,7 +197,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="medal" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="medal" class="w-10 h-10"></i>
                     </div>
 
                     <h3 class="text-base md:text-xl font-bold mb-2">Medallas</h3>
@@ -206,7 +207,7 @@
                 <div
                     class="bg-white/5 rounded-2xl p-4 md:p-8 hover:bg-white/10 transition-all duration-300 feature-card">
                     <div class="mb-4 text-primary">
-                        <i data-lucide="trophy" class="w-10 h-10"></i>
+                        <i aria-hidden="true" data-lucide="trophy" class="w-10 h-10"></i>
                     </div>
                     <h3 class="text-base md:text-xl font-bold mb-2">Récords personales</h3>
                     <p class="text-gray-400">Supera tus marcas y celebra cada nuevo récord personal.</p>
@@ -233,13 +234,13 @@
                         suplementos y
                         mucho más.</p>
                     <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Rutinas activas al instante</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Accesos rápidos a todas las secciones</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Frase motivacional diaria</li>
                     </ul>
@@ -261,13 +262,13 @@
                         cada
                         entrenamiento. Adaptadas a tu nivel y objetivos.</p>
                     <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Crea rutinas desde cero</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Activa y gestiona tus entrenamientos</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Adaptadas a tu nivel y objetivos</li>
                     </ul>
@@ -289,13 +290,13 @@
                     <p class="text-gray-400 text-lg mb-6">BoniCoach responde tus dudas sobre ejercicios, rutinas y
                         nutrición. Disponible 24/7.</p>
                     <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Respuestas personalizadas para ti</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Consejos de nutrición y ejercicio</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Disponible las 24 horas</li>
                     </ul>
@@ -318,13 +319,13 @@
                         semana
                         a semana.</p>
                     <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Gráficas detalladas de evolución</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Control de peso y grasa corporal</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Cálculo automático del IMC</li>
                     </ul>
@@ -347,13 +348,13 @@
                     <p class="text-gray-400 text-lg mb-6">Explora nuestra biblioteca completa con videos de ejecución y
                         filtros por músculo.</p>
                     <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Videos de ejecución correcta</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Filtros por grupo muscular</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
                                 class="w-5 h-5 text-primary"></i>
                             Guarda tus ejercicios favoritos</li>
                     </ul>
@@ -381,7 +382,7 @@
                         class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
                         1</div>
                     <div class="mb-4 flex justify-center text-primary">
-                        <i data-lucide="download" class="w-8 h-8"></i>
+                        <i aria-hidden="true" data-lucide="download" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Descárgate la app</h3>
                     <p class="text-gray-400">Disponible gratis en Google Play. Sin tarjeta, sin compromisos.</p>
@@ -392,7 +393,7 @@
                         class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
                         2</div>
                     <div class="mb-4 flex justify-center text-primary">
-                        <i data-lucide="user-round" class="w-8 h-8"></i>
+                        <i aria-hidden="true" data-lucide="user-round" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Crea tu perfil</h3>
                     <p class="text-gray-400">Indica tu objetivo, nivel y preferencias. BoniFit se adapta a ti.</p>
@@ -403,7 +404,7 @@
                         class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-black mx-auto mb-6">
                         3</div>
                     <div class="mb-4 flex justify-center text-primary">
-                        <i data-lucide="flame" class="w-8 h-8"></i>
+                        <i aria-hidden="true" data-lucide="flame" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Empieza a entrenar</h3>
                     <p class="text-gray-400">Accede a tus rutinas, el IA Coach y todo el contenido desde el primer
@@ -424,7 +425,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿Es gratis?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -436,7 +437,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿Qué es BoniCoach?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -449,7 +450,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿Para qué nivel es BoniFit?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -462,7 +463,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿Necesito equipamiento o gimnasio?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -474,7 +475,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿La app hace seguimiento de mi progreso?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -487,7 +488,7 @@
                     <summary
                         class="flex items-center justify-between gap-4 px-6 py-5 font-bold text-lg cursor-pointer hover:bg-white/5 transition-colors duration-200">
                         <span>¿Es seguro registrarme?</span>
-                        <i data-lucide="chevron-down"
+                        <i aria-hidden="true" data-lucide="chevron-down"
                             class="w-5 h-5 shrink-0 text-primary transition-transform duration-300"></i>
                     </summary>
                     <div class="px-6 pb-5 pt-1 text-gray-400 leading-relaxed">
@@ -542,6 +543,12 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
+
+            // Avisa a los lectores de pantalla de si el menú quedó abierto o cerrado
+            const abierto = menu.classList.contains('flex');
+            const boton = document.getElementById('menu-btn');
+            boton.setAttribute('aria-expanded', abierto);
+            boton.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
         }
     </script>
 
