@@ -671,6 +671,87 @@
         });
     </script>
 
+    <!-- Datos estructurados: describen la app y el FAQ para los buscadores.
+         No se ven en la página, solo los leen Google y similares. -->
+    <script type="application/ld+json">
+[
+            {
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "BoniFit",
+                    "description": "Rutinas, ejercicios, progreso, nutrición y suplementos — todo en una sola app.",
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "Android",
+                    "url": "https://bonifit.site/",
+                    "image": "https://bonifit.site/logo.png",
+                    "inLanguage": "es",
+                    "author": {
+                            "@type": "Person",
+                            "name": "Francisco Javier Bonilla Varo"
+                    },
+                    "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "EUR"
+                    }
+            },
+            {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                            {
+                                    "@type": "Question",
+                                    "name": "¿Es gratis?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Sí, BoniFit es completamente gratis para descargar y usar. Sin tarjeta, sin compromisos."
+                                    }
+                            },
+                            {
+                                    "@type": "Question",
+                                    "name": "¿Qué es BoniCoach?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Es nuestro asistente de inteligencia artificial disponible 24/7 para resolver tus dudas sobre entrenamientos, nutrición y suplementación de forma personalizada."
+                                    }
+                            },
+                            {
+                                    "@type": "Question",
+                                    "name": "¿Para qué nivel es BoniFit?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Para todos los niveles. Tanto si empiezas desde cero como si llevas años entrenando, BoniFit se adapta a tus objetivos y ritmo."
+                                    }
+                            },
+                            {
+                                    "@type": "Question",
+                                    "name": "¿Necesito equipamiento o gimnasio?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "No es obligatorio. Puedes encontrar ejercicios tanto para entrenar en casa como en el gimnasio."
+                                    }
+                            },
+                            {
+                                    "@type": "Question",
+                                    "name": "¿La app hace seguimiento de mi progreso?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Sí, puedes registrar tu peso, grasa corporal e IMC y ver gráficas detalladas de tu evolución semana a semana."
+                                    }
+                            },
+                            {
+                                    "@type": "Question",
+                                    "name": "¿Es seguro registrarme?",
+                                    "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Sí, tus datos están protegidos y nunca se comparten con terceros. Cumplimos con la política de privacidad vigente."
+                                    }
+                            }
+                    ]
+            }
+    ]
+    </script>
+
 </body>
 
 </html>
