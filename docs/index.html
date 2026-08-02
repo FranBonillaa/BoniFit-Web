@@ -87,7 +87,8 @@
         <div class="flex items-center gap-3 ml-auto">
             <button id="menu-btn" type="button" aria-label="Abrir menú" aria-controls="mobile-menu"
                 aria-expanded="false" class="md:hidden text-white" onclick="toggleMenu()">
-                <i aria-hidden="true" data-lucide="menu" class="w-7 h-7"></i>
+                <span class="js-icon-menu"><i aria-hidden="true" data-lucide="menu" class="w-7 h-7"></i></span>
+                <span class="js-icon-close hidden"><i aria-hidden="true" data-lucide="x" class="w-7 h-7"></i></span>
             </button>
             <a href="#download"
                 class="md:flex hidden bg-primary hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300">
@@ -538,18 +539,53 @@
     <script>lucide.createIcons();</script>
 
     <script>
-        //Abre y cierra el menú móvil alternando entre visible (flex) y oculto (hidden)
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
+        const menu = document.getElementById('mobile-menu');
+        const menuBtn = document.getElementById('menu-btn');
+        const iconoMenu = document.querySelector('.js-icon-menu');
+        const iconoCerrar = document.querySelector('.js-icon-close');
+
+        // Deja el menú abierto o cerrado segun le pases true o false.
+        // classList.toggle('clase', condicion) pone la clase si la condicion
+        // es true y la quita si es false.
+        function setMenu(abrir) {
+            menu.classList.toggle('hidden', !abrir);
+            menu.classList.toggle('flex', abrir);
+
+            // Cambia el icono: hamburguesa cuando esta cerrado, X cuando esta abierto
+            iconoMenu.classList.toggle('hidden', abrir);
+            iconoCerrar.classList.toggle('hidden', !abrir);
 
             // Avisa a los lectores de pantalla de si el menú quedó abierto o cerrado
-            const abierto = menu.classList.contains('flex');
-            const boton = document.getElementById('menu-btn');
-            boton.setAttribute('aria-expanded', abierto);
-            boton.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+            menuBtn.setAttribute('aria-expanded', abrir);
+            menuBtn.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
+
+            // Bloquea el scroll del fondo mientras el menú esta abierto
+            document.body.classList.toggle('overflow-hidden', abrir);
         }
+
+        //Abre el menú si esta cerrado y lo cierra si esta abierto
+        function toggleMenu() {
+            setMenu(menu.classList.contains('hidden'));
+        }
+
+        // Cierra con la tecla Escape y devuelve el foco al boton
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                setMenu(false);
+                menuBtn.focus();
+            }
+        });
+
+        // Cierra al pulsar fuera del menú
+        document.addEventListener('click', e => {
+            if (menu.classList.contains('hidden')) return;
+            if (!menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
+        });
+
+        // Si se agranda la ventana a escritorio, cierra el menú móvil
+        window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+            if (e.matches) setMenu(false);
+        });
     </script>
 
     <script>
