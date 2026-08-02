@@ -65,6 +65,40 @@
         details[open]>summary svg {
             transform: rotate(180deg);
         }
+
+        /* Carcasa de movil que enmarca cada captura.
+           Es solo CSS: no hay ninguna imagen de movil descargada. */
+        .phone {
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 2.25rem;
+            background: #0d0d0d;
+            /* El borde claro simula el canto del movil y despega la carcasa
+               del fondo oscuro; si no, se perderia contra el negro. */
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+                0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .phone img {
+            display: block;
+            border-radius: 1.6rem;
+        }
+
+        /* La muesca de la camara: una barrita centrada en la parte de arriba */
+        .phone::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 33%;
+            height: 18px;
+            background: #0d0d0d;
+            border-radius: 0 0 0.75rem 0.75rem;
+            z-index: 1;
+        }
     </style>
     <script src="https://unpkg.com/lucide@1.28.0/dist/umd/lucide.min.js"
         integrity="sha384-VrnzGPiSyQxm3mI2VhlssyR85zugSHtxMkgO42qV3wUAbNk1oRdZkCWjXKOhuVu6"
@@ -249,8 +283,10 @@
                     </ul>
                 </div>
                 <div class="flex-1 flex justify-center screenshot-img">
-                    <img src="screenshots/inicio.webp" alt="Pantalla de inicio de BoniFit" width="346" height="787"
-                        loading="lazy" decoding="async" class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                    <div class="phone">
+                        <img src="screenshots/inicio.webp" alt="Pantalla de inicio de BoniFit" width="346" height="787"
+                        loading="lazy" decoding="async" class="w-auto h-80 md:h-96">
+                    </div>
                 </div>
 
             </div>
@@ -277,8 +313,10 @@
                     </ul>
                 </div>
                 <div class="flex-1 flex justify-center order-last md:order-first screenshot-img">
-                    <img src="screenshots/rutinas.webp" alt="Pantalla de rutinas de BoniFit" width="354" height="789"
-                        loading="lazy" decoding="async" class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                    <div class="phone">
+                        <img src="screenshots/rutinas.webp" alt="Pantalla de rutinas de BoniFit" width="354" height="789"
+                        loading="lazy" decoding="async" class="w-auto h-80 md:h-96">
+                    </div>
                 </div>
             </div>
 
@@ -305,9 +343,11 @@
                     </ul>
                 </div>
                 <div class="flex-1 flex justify-center screenshot-img">
-                    <img src="screenshots/ia_coach.webp" alt="Pantalla del asistente BoniCoach con IA" width="357"
+                    <div class="phone">
+                        <img src="screenshots/ia_coach.webp" alt="Pantalla del asistente BoniCoach con IA" width="357"
                         height="800" loading="lazy" decoding="async"
-                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                        class="w-auto h-80 md:h-96">
+                    </div>
                 </div>
             </div>
 
@@ -334,9 +374,11 @@
                     </ul>
                 </div>
                 <div class="flex-1 flex justify-center order-last md:order-first screenshot-img">
-                    <img src="screenshots/evolucion.webp" alt="Pantalla de evolución y progreso de BoniFit" width="357"
+                    <div class="phone">
+                        <img src="screenshots/evolucion.webp" alt="Pantalla de evolución y progreso de BoniFit" width="357"
                         height="800" loading="lazy" decoding="async"
-                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                        class="w-auto h-80 md:h-96">
+                    </div>
                 </div>
             </div>
 
@@ -363,9 +405,11 @@
                     </ul>
                 </div>
                 <div class="flex-1 flex justify-center screenshot-img">
-                    <img src="screenshots/biblioteca.webp" alt="Biblioteca de ejercicios de BoniFit" width="357"
+                    <div class="phone">
+                        <img src="screenshots/biblioteca.webp" alt="Biblioteca de ejercicios de BoniFit" width="357"
                         height="800" loading="lazy" decoding="async"
-                        class="w-auto h-80 md:h-96 rounded-3xl shadow-2xl">
+                        class="w-auto h-80 md:h-96">
+                    </div>
                 </div>
             </div>
         </div>
