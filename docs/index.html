@@ -70,8 +70,8 @@
 
         /* Evita el scroll lateral que provocan las animaciones que entran
            desde los lados. Se usa "clip" y NO "hidden" a proposito: "hidden"
-           convierte al elemento en un contenedor con scroll propio y eso
-           rompe ScrollTrigger (las animaciones se quedan sin dispararse). */
+           convierte al elemento en un contenedor con scroll propio, y eso
+           puede desbaratar el calculo de posiciones de otras librerias. */
         #screenshots {
             overflow-x: clip;
         }
@@ -114,7 +114,6 @@
         integrity="sha384-VrnzGPiSyQxm3mI2VhlssyR85zugSHtxMkgO42qV3wUAbNk1oRdZkCWjXKOhuVu6"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 
 
@@ -645,90 +644,48 @@
     </script>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
         // matchMedia ejecuta las animaciones SOLO si el usuario no ha pedido
         // reducir el movimiento en las opciones de su sistema operativo.
         // Si lo ha pedido, todo aparece ya colocado, sin animar.
         gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 
-            // HERO
+            // HERO: se ve nada mas entrar, no hace falta esperar a nada
             gsap.from(".hero-logo", { opacity: 0, y: -50, duration: 1, ease: "power3.out" });
             gsap.from(".hero-title", { opacity: 0, y: 60, duration: 1, delay: 0.3, ease: "power3.out" });
             gsap.from(".hero-subtitle", { opacity: 0, y: 40, duration: 1, delay: 0.6, ease: "power3.out" });
             gsap.from(".hero-btn", { opacity: 0, y: 30, duration: 1, delay: 0.9, ease: "power3.out" });
 
-            // FEATURES
-            gsap.from(".feature-card", {
-                scrollTrigger: {
-                    trigger: "#features",
-                    start: "top 80%",
-                },
-                opacity: 0,
-                y: 30,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: "power3.out",
-            });
+            // El resto se anima al entrar en pantalla. Se usa IntersectionObserver,
+            // que es una funcion del propio navegador: avisa cuando un elemento
+            // asoma por la pantalla. Es mucho mas fiable que calcular posiciones
+            // de scroll a mano, que es lo que hacia antes y fallaba.
+            if (!("IntersectionObserver" in window)) return;
 
-            // SCREENSHOTS
-            gsap.utils.toArray(".screenshot-block").forEach(block => {
-                const text = block.querySelector(".screenshot-text");
-                const img = block.querySelector(".screenshot-img");
+            function animarAlVerse(selector, desde, hasta) {
+                const elementos = gsap.utils.toArray(selector);
+                if (!elementos.length) return;
 
-                gsap.from(text, {
-                    scrollTrigger: { trigger: block, start: "top 80%" },
-                    opacity: 0,
-                    x: -60,
-                    duration: 0.8,
-                    ease: "power3.out"
-                });
+                gsap.set(elementos, desde);   // los deja en su estado de partida
 
-                gsap.from(img, {
-                    scrollTrigger: { trigger: block, start: "top 80%" },
-                    opacity: 0,
-                    x: 60,
-                    duration: 0.8,
-                    ease: "power3.out"
-                });
-            });
+                const vigilante = new IntersectionObserver((entradas, obs) => {
+                    const visibles = entradas.filter(e => e.isIntersecting).map(e => e.target);
+                    if (!visibles.length) return;
+                    visibles.forEach(el => obs.unobserve(el));   // ya animado, se deja de vigilar
+                    gsap.to(visibles, Object.assign(
+                        { opacity: 1, x: 0, y: 0, duration: 0.7, ease: "power3.out" },
+                        hasta
+                    ));
+                }, { threshold: 0.1 });
 
-            // CÓMO FUNCIONA
-            gsap.from(".step-card", {
-                scrollTrigger: {
-                    trigger: "#how-it-works",
-                    start: "top 80%",
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.6,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
+                elementos.forEach(el => vigilante.observe(el));
+            }
 
-            // DESCARGA
-            gsap.from(".download-title", {
-                scrollTrigger: { trigger: "#download", start: "top 80%" },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                ease: "power3.out"
-            });
-            gsap.from(".download-btn", {
-                scrollTrigger: { trigger: "#download", start: "top 80%" },
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                delay: 0.3,
-                ease: "power3.out"
-            });
-
-            // ScrollTrigger calcula las posiciones al arrancar. Si despues
-            // cambia algo (se cargan las imagenes, cambias el zoom, giras el
-            // movil) hay que decirle que las recalcule o los disparadores
-            // se quedan apuntando a sitios equivocados.
-            window.addEventListener("load", () => ScrollTrigger.refresh());
-            window.addEventListener("resize", () => ScrollTrigger.refresh());
+            animarAlVerse(".feature-card", { opacity: 0, y: 30 }, { duration: 0.6, stagger: 0.08 });
+            animarAlVerse(".screenshot-text", { opacity: 0, x: -60 }, { duration: 0.8 });
+            animarAlVerse(".screenshot-img", { opacity: 0, x: 60 }, { duration: 0.8 });
+            animarAlVerse(".step-card", { opacity: 0, y: 50 }, { duration: 0.6, stagger: 0.15 });
+            animarAlVerse(".download-title", { opacity: 0, y: 50 }, { duration: 0.8 });
+            animarAlVerse(".download-btn", { opacity: 0, y: 30 }, { duration: 0.8, delay: 0.2 });
         });
 
         // RED DE SEGURIDAD
