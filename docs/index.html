@@ -68,6 +68,14 @@
             transform: rotate(180deg);
         }
 
+        /* Evita el scroll lateral que provocan las animaciones que entran
+           desde los lados. Se usa "clip" y NO "hidden" a proposito: "hidden"
+           convierte al elemento en un contenedor con scroll propio y eso
+           rompe ScrollTrigger (las animaciones se quedan sin dispararse). */
+        #screenshots {
+            overflow-x: clip;
+        }
+
         /* Carcasa de movil que enmarca cada captura.
            Es solo CSS: no hay ninguna imagen de movil descargada. */
         .phone {
@@ -111,7 +119,7 @@
 
 
 
-<body class="bg-dark text-white font-sans overflow-x-hidden">
+<body class="bg-dark text-white font-sans">
 
     <nav
         class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-dark/80 backdrop-blur-md border-b border-white/10">
@@ -714,7 +722,49 @@
                 delay: 0.3,
                 ease: "power3.out"
             });
+
+            // ScrollTrigger calcula las posiciones al arrancar. Si despues
+            // cambia algo (se cargan las imagenes, cambias el zoom, giras el
+            // movil) hay que decirle que las recalcule o los disparadores
+            // se quedan apuntando a sitios equivocados.
+            window.addEventListener("load", () => ScrollTrigger.refresh());
+            window.addEventListener("resize", () => ScrollTrigger.refresh());
         });
+
+        // RED DE SEGURIDAD
+        // Las animaciones dejan los elementos invisibles (opacity 0) hasta que
+        // GSAP los muestra. Si algo fallara, el contenido desapareceria de la
+        // web. Esto lo impide.
+        //
+        // Solo rescata lo que esta EN PANTALLA y sigue invisible: eso si es un
+        // fallo. Lo que esta mas abajo esperando su turno no se toca, para no
+        // cargarse las animaciones de scroll.
+        const ANIMADOS = ".hero-logo, .hero-title, .hero-subtitle, .hero-btn, .feature-card," +
+            ".screenshot-text, .screenshot-img, .step-card, .download-title, .download-btn";
+
+        function rescatarInvisibles() {
+            document.querySelectorAll(ANIMADOS).forEach(el => {
+                const caja = el.getBoundingClientRect();
+                const enPantalla = caja.top < window.innerHeight * 0.9 && caja.bottom > 0;
+                if (enPantalla && parseFloat(getComputedStyle(el).opacity) < 0.1) {
+                    el.style.opacity = "1";
+                    el.style.transform = "none";
+                }
+            });
+        }
+
+        // Se comprueba al cargar y cuando dejas de hacer scroll. El retardo de
+        // 1,2s da tiempo de sobra a que termine cualquier animacion normal
+        // (la mas larga dura 0,8s), asi no corta ninguna a medias.
+        let esperando;
+        function comprobarMasTarde() {
+            clearTimeout(esperando);
+            esperando = setTimeout(rescatarInvisibles, 1200);
+        }
+        window.addEventListener("load", comprobarMasTarde);
+        window.addEventListener("scroll", comprobarMasTarde, { passive: true });
+        window.addEventListener("resize", comprobarMasTarde);
+        comprobarMasTarde();
     </script>
 
     <!-- Datos estructurados: describen la app y el FAQ para los buscadores.
