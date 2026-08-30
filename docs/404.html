@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada — BoniFit</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#FF3B30">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#FF3B30', dark: '#1a1a1a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+</head>
+
+<body class="bg-dark text-white font-sans min-h-screen flex flex-col">
+    <header class="border-b border-white/10">
+        <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" aria-label="BoniFit — ir al inicio">
+                <img src="/logo.png" alt="BoniFit" width="500" height="500" class="w-10 h-10">
+            </a>
+            <a href="/" class="text-gray-400 hover:text-white text-sm font-semibold transition-colors duration-200">&larr;
+                Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-20"
+        style="background: linear-gradient(to bottom, #1a1a1a, #3b0a0a, #1a1a1a);">
+        <p class="text-primary text-7xl md:text-9xl font-black mb-4">404</p>
+        <h1 class="text-3xl md:text-4xl font-black mb-4">Esta página no existe</h1>
+        <p class="text-gray-400 text-lg max-w-md mb-10">
+            Puede que el enlace esté mal escrito o que la página ya no esté disponible.
+        </p>
+
+        <a href="/"
+            class="bg-primary hover:bg-red-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300">
+            Volver al inicio
+        </a>
+
+        <p class="text-gray-400 text-sm mt-12 mb-3">O ve directamente a:</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-gray-400 font-semibold">
+            <a href="/#features" class="hover:text-white transition-colors duration-200">Características</a>
+            <a href="/#screenshots" class="hover:text-white transition-colors duration-200">Capturas</a>
+            <a href="/#faq" class="hover:text-white transition-colors duration-200">Preguntas</a>
+            <a href="/#download" class="hover:text-white transition-colors duration-200">Descargar</a>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/10 py-8 px-6 text-center">
+        <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm">
+            <a href="/privacy_policy.html" class="hover:text-white transition-colors duration-200">Política de
+                privacidad</a>
+            <a href="/terms_and_conditions.html" class="hover:text-white transition-colors duration-200">Términos de
+                servicio</a>
+            <a href="/eliminar-cuenta.html" class="hover:text-white transition-colors duration-200">Eliminar cuenta</a>
+        </div>
+        <p class="text-gray-400 text-sm mt-4">© 2026 BoniFit. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
