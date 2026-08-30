@@ -5,21 +5,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar cuenta — BoniFit</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Solicita la eliminación de tu cuenta de BoniFit y de todos tus datos.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#FF3B30">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#FF3B30', dark: '#1a1a1a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
 </head>
 
-<body class="bg-[#1a1a1a] text-white font-sans min-h-screen flex flex-col items-center justify-center px-6 text-center">
-    <img src="logo.png" alt="BoniFit" class="w-20 h-20 mb-8">
-    <h1 class="text-4xl font-black mb-4">Eliminar <span class="text-[#FF3B30]">cuenta</span></h1>
-    <p class="text-gray-400 text-lg max-w-md mb-8">
-        Para solicitar la eliminación de tu cuenta y todos tus datos, envíanos un correo a:
-    </p>
-    <a href="mailto:fbonillavaro@gmail.com?subject=Eliminar%20cuenta%20BoniFit"
-        class="bg-[#FF3B30] hover:bg-red-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300">
-        Solicitar eliminación
-    </a>
-    <p class="text-gray-400 text-sm mt-8">Procesaremos tu solicitud en un plazo máximo de 7 días.</p>
+<body class="bg-dark text-white font-sans">
+    <header class="border-b border-white/10">
+        <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" aria-label="BoniFit — ir al inicio">
+                <img src="logo.png" alt="BoniFit" width="500" height="500" class="w-10 h-10">
+            </a>
+            <a href="index.html"
+                class="text-gray-400 hover:text-white text-sm font-semibold transition-colors duration-200">&larr;
+                Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <h1 class="text-4xl md:text-5xl font-black mb-4">Eliminar <span class="text-primary">cuenta</span></h1>
+        <p class="text-gray-400 text-lg leading-relaxed mb-10">
+            Puedes solicitar en cualquier momento que eliminemos tu cuenta de BoniFit y todos los datos asociados.
+        </p>
+
+        <h2 class="text-xl font-bold mb-4">Qué se elimina</h2>
+        <p class="text-gray-400 leading-relaxed mb-4">
+            Al eliminar tu cuenta se borra de forma permanente toda tu información:
+        </p>
+        <ul class="text-gray-400 leading-relaxed space-y-2 mb-10 list-disc pl-6">
+            <li>Tus datos de perfil (nombre, correo, fecha de nacimiento, altura, nivel y objetivo)</li>
+            <li>Tus rutinas y los ejercicios que hayas configurado en ellas</li>
+            <li>Tu historial de entrenamientos y tus estadísticas de actividad</li>
+            <li>Tus registros de evolución (peso, grasa corporal y estado de ánimo)</li>
+            <li>Tus récords personales y las medallas conseguidas</li>
+            <li>Tus ejercicios favoritos y tu historial de conversaciones con BoniCoach</li>
+        </ul>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-10">
+            <p class="text-gray-400 leading-relaxed">
+                <strong class="text-white">La eliminación es permanente.</strong> Una vez completada no podremos
+                recuperar tu cuenta ni ninguno de tus datos, y tendrías que registrarte de nuevo desde cero.
+            </p>
+        </div>
+
+        <h2 class="text-xl font-bold mb-4">Desde la app (inmediato)</h2>
+        <p class="text-gray-400 leading-relaxed mb-10">
+            También puedes eliminar tu cuenta desde Ajustes en la app. Es la forma más rápida: se te pedirá una
+            confirmación y la eliminación se realiza al momento, sin esperas.
+        </p>
+
+        <h2 class="text-xl font-bold mb-4">Por correo</h2>
+        <p class="text-gray-400 leading-relaxed mb-8">
+            Si ya no tienes acceso a la app, escríbenos desde la dirección de correo con la que te registraste.
+            Procesaremos tu solicitud en un plazo máximo de 7 días.
+        </p>
+
+        <a href="mailto:fbonillavaro@gmail.com?subject=Eliminar%20cuenta%20BoniFit"
+            class="inline-block bg-primary hover:bg-red-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300">
+            Solicitar eliminación por correo
+        </a>
+
+        <p class="text-gray-400 text-sm mt-10 leading-relaxed">
+            Para más información sobre cómo tratamos tus datos, consulta la
+            <a href="privacy_policy.html" class="text-primary underline hover:no-underline">política de privacidad</a>.
+        </p>
+    </main>
+
+    <footer class="border-t border-white/10 py-8 px-6 text-center">
+        <a href="index.html"
+            class="text-gray-400 hover:text-white text-sm font-semibold transition-colors duration-200">&larr; Volver a
+            BoniFit</a>
+        <p class="text-gray-400 text-sm mt-4">© 2026 BoniFit. Todos los derechos reservados.</p>
+    </footer>
 </body>
 
 </html>
