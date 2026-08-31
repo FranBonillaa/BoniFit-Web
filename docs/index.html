@@ -119,6 +119,23 @@
             border-radius: 1.6rem;
         }
 
+        /* Version reducida del marco, para las miniaturas de la galeria.
+           Todo mas fino y con menos redondeo, proporcional al tamano. */
+        .phone-sm {
+            padding: 5px;
+            border-radius: 1.1rem;
+        }
+
+        .phone-sm img {
+            border-radius: 0.8rem;
+        }
+
+        .phone-sm::before {
+            top: 5px;
+            height: 9px;
+            border-radius: 0 0 0.4rem 0.4rem;
+        }
+
         /* La muesca de la camara: una barrita centrada en la parte de arriba */
         .phone::before {
             content: "";
@@ -315,38 +332,7 @@
                 Descubre la <span class="text-primary">experiencia</span>
             </h2>
 
-            <!-- Pantalla 1: Inicio -->
-            <div class="flex flex-col md:flex-row  items-center gap-6 justify-center mb-24 screenshot-block">
-                <div class="flex-1 screenshot-text">
-                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block ">Pantalla
-                        principal</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Tu centro de control</h3>
-                    <p class="text-gray-400 text-lg mb-6">Accede de un vistazo a tus rutinas activas,
-                        recetas,
-                        suplementos y
-                        mucho más.</p>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            Rutinas activas al instante</li>
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            Accesos rápidos a todas las secciones</li>
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            Frase motivacional diaria</li>
-                    </ul>
-                </div>
-                <div class="flex-1 flex justify-center screenshot-img">
-                    <div class="phone">
-                        <img src="screenshots/inicio.webp" alt="Pantalla de inicio de BoniFit" width="346" height="787"
-                        loading="lazy" decoding="async" class="w-auto h-80 md:h-96">
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Pantalla 2: Rutinas -->
+            <!-- Pantalla 1: Rutinas -->
             <div class="flex flex-col md:flex-row  items-center gap-6 justify-center mb-24 screenshot-block">
                 <div class="flex-1 order-first md:order-last screenshot-text">
                     <span
@@ -369,7 +355,7 @@
                 </div>
                 <div class="flex-1 flex justify-center order-last md:order-first screenshot-img">
                     <div class="phone">
-                        <img src="screenshots/rutinas.webp" alt="Pantalla de rutinas de BoniFit" width="354" height="789"
+                        <img src="screenshots/rutinas.webp" alt="Pantalla de rutinas de BoniFit" width="357" height="800"
                         loading="lazy" decoding="async" class="w-auto h-80 md:h-96">
                     </div>
                 </div>
@@ -436,35 +422,52 @@
                 </div>
             </div>
 
-            <!-- Pantalla 5: Biblioteca -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-24 screenshot-block">
-                <div class="flex-1 screenshot-text">
-                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">Ejercicios</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Más de 50 <span
-                            class="text-primary">ejercicios</span> a
-                        tu alcance
-                    </h3>
-                    <p class="text-gray-400 text-lg mb-6">Explora nuestra biblioteca completa con el GIF animado de cada
-                        ejercicio y filtros por músculo y equipamiento.</p>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            GIF animado de la ejecución correcta</li>
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            Filtros por músculo y equipamiento</li>
-                        <li class="flex items-center gap-3"><i aria-hidden="true" data-lucide="check-circle"
-                                class="w-5 h-5 text-primary"></i>
-                            Guarda tus ejercicios favoritos</li>
-                    </ul>
-                </div>
-                <div class="flex-1 flex justify-center screenshot-img">
-                    <div class="phone">
-                        <img src="screenshots/biblioteca.webp" alt="Biblioteca de ejercicios de BoniFit" width="357"
-                        height="800" loading="lazy" decoding="async"
-                        class="w-auto h-80 md:h-96">
+            <!-- GALERÍA: el resto de pantallas, en miniatura -->
+            <div class="text-center mb-10">
+                <h3 class="text-2xl md:text-3xl font-bold mb-3">Y mucho <span class="text-primary">más</span></h3>
+                <p class="text-gray-400 text-lg">Todo lo que encontrarás dentro de la app.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+                <figure class="text-center gallery-item">
+                    <div class="phone phone-sm inline-block">
+                        <img src="screenshots/inicio.webp" alt="Pantalla de inicio de BoniFit" width="357" height="800"
+                            loading="lazy" decoding="async" class="w-full h-auto">
                     </div>
-                </div>
+                    <figcaption class="text-gray-400 text-sm font-semibold mt-3">Inicio</figcaption>
+                </figure>
+
+                <figure class="text-center gallery-item">
+                    <div class="phone phone-sm inline-block">
+                        <img src="screenshots/actividad.webp" alt="Calendario de actividad y racha de días de BoniFit"
+                            width="357" height="800" loading="lazy" decoding="async" class="w-full h-auto">
+                    </div>
+                    <figcaption class="text-gray-400 text-sm font-semibold mt-3">Actividad</figcaption>
+                </figure>
+
+                <figure class="text-center gallery-item">
+                    <div class="phone phone-sm inline-block">
+                        <img src="screenshots/medallas.webp" alt="Pantalla de medallas y logros de BoniFit" width="357"
+                            height="800" loading="lazy" decoding="async" class="w-full h-auto">
+                    </div>
+                    <figcaption class="text-gray-400 text-sm font-semibold mt-3">Medallas</figcaption>
+                </figure>
+
+                <figure class="text-center gallery-item">
+                    <div class="phone phone-sm inline-block">
+                        <img src="screenshots/recetas.webp" alt="Pantalla de recetas fit con macros de BoniFit"
+                            width="357" height="800" loading="lazy" decoding="async" class="w-full h-auto">
+                    </div>
+                    <figcaption class="text-gray-400 text-sm font-semibold mt-3">Recetas</figcaption>
+                </figure>
+
+                <figure class="col-span-2 md:col-span-1 text-center gallery-item">
+                    <div class="phone phone-sm inline-block max-w-[45%] md:max-w-none">
+                        <img src="screenshots/suplementos.webp" alt="Pantalla de suplementación de BoniFit" width="357"
+                            height="800" loading="lazy" decoding="async" class="w-full h-auto">
+                    </div>
+                    <figcaption class="text-gray-400 text-sm font-semibold mt-3">Suplementos</figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -734,6 +737,7 @@
             animarAlVerse(".feature-card", { opacity: 0, y: 30 }, { duration: 0.6, stagger: 0.08 });
             animarAlVerse(".screenshot-text", { opacity: 0, x: -60 }, { duration: 0.8 });
             animarAlVerse(".screenshot-img", { opacity: 0, x: 60 }, { duration: 0.8 });
+            animarAlVerse(".gallery-item", { opacity: 0, y: 30 }, { duration: 0.6, stagger: 0.08 });
             animarAlVerse(".step-card", { opacity: 0, y: 50 }, { duration: 0.6, stagger: 0.15 });
             animarAlVerse(".download-title", { opacity: 0, y: 50 }, { duration: 0.8 });
             animarAlVerse(".download-btn", { opacity: 0, y: 30 }, { duration: 0.8, delay: 0.2 });
