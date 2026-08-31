@@ -142,11 +142,11 @@
             </a>
 
         </div>
-    </nav>
 
-    <!-- MENÚ MÓVIL -->
-    <div id="mobile-menu"
-        class="hidden fixed top-[72px] left-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex-col gap-6 md:hidden">
+        <!-- MENÚ MÓVIL. Va dentro del <nav> y usa top-full ("justo debajo de mi
+             contenedor"), asi se coloca solo aunque cambie el alto de la barra. -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex-col gap-6 md:hidden">
         <a href="#features" onclick="toggleMenu()"
             class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Características</a>
         <a href="#screenshots" onclick="toggleMenu()"
@@ -155,9 +155,10 @@
             class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Cómo funciona</a>
         <a href="#faq" onclick="toggleMenu()"
             class="text-gray-400 font-semibold hover:text-white transition-colors duration-200">Preguntas frecuentes</a>
-        <a href="#download" onclick="toggleMenu()"
-            class="text-primary font-bold hover:text-red-400 transition-colors duration-200">Descargar gratis</a>
-    </div>
+            <a href="#download" onclick="toggleMenu()"
+                class="text-primary font-bold hover:text-red-400 transition-colors duration-200">Descargar gratis</a>
+        </div>
+    </nav>
 
     <main>
 
