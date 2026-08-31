@@ -54,6 +54,29 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Marca con un contorno el elemento seleccionado al navegar con el
+           teclado. :focus-visible solo se activa con el teclado, no al hacer
+           clic con el raton, asi que no molesta en el uso normal. */
+        :focus-visible {
+            outline: 2px solid #FF3B30;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Enlace para saltarse el menu e ir directo al contenido. Vive fuera
+           de la pantalla hasta que recibe el foco con Tab, y entonces baja. */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 100;
+            transition: top .2s ease;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
         /* Oculta el triangulito que <details> muestra por defecto */
         summary {
             list-style: none;
@@ -120,6 +143,9 @@
 
 <body class="bg-dark text-white font-sans">
 
+    <a href="#contenido" class="skip-link bg-primary text-white font-bold py-2 px-5 rounded-full">Saltar al
+        contenido</a>
+
     <nav
         class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-dark/80 backdrop-blur-md border-b border-white/10">
         <a href="#" aria-label="BoniFit — ir al inicio"><img src="logo.png" alt="BoniFit" width="500" height="500"
@@ -160,7 +186,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="contenido">
 
         <!-- HERO -->
     <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32"

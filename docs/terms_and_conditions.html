@@ -16,6 +16,29 @@
         tailwind.config = { theme: { extend: { colors: { primary: '#FF3B30', dark: '#1a1a1a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
     </script>
     <style>
+        /* Marca con un contorno el elemento seleccionado al navegar con el
+           teclado. :focus-visible solo se activa con el teclado, no al hacer
+           clic con el raton, asi que no molesta en el uso normal. */
+        :focus-visible {
+            outline: 2px solid #FF3B30;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* Enlace para saltarse el menu e ir directo al contenido. Vive fuera
+           de la pantalla hasta que recibe el foco con Tab, y entonces baja. */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 100;
+            transition: top .2s ease;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
         /* Da estilo al texto legal sin tener que tocarlo etiqueta por etiqueta.
            El documento usa <strong> como titulo de seccion y <br> como espaciado. */
         .legal strong {
@@ -63,6 +86,10 @@
 </head>
 
 <body class="bg-dark text-white font-sans">
+
+    <a href="#contenido" class="skip-link bg-primary text-white font-bold py-2 px-5 rounded-full">Saltar al
+        contenido</a>
+
     <header class="border-b border-white/10">
         <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="index.html" aria-label="BoniFit — ir al inicio">
@@ -74,7 +101,7 @@
         </div>
     </header>
 
-    <main lang="en" class="legal max-w-3xl mx-auto px-6 py-16 text-gray-400 leading-relaxed">
+    <main id="contenido" lang="en" class="legal max-w-3xl mx-auto px-6 py-16 text-gray-400 leading-relaxed">
         <strong>Terms &amp; Conditions</strong><br>
     <p>These terms and conditions apply to the BoniFit app for mobile devices, together with any related services
         operated by Francisco Javier Bonilla Varo (collectively, the "Application"). Francisco Javier Bonilla Varo is
