@@ -131,22 +131,25 @@
         }
 
         .phone-sm::before {
-            top: 5px;
-            height: 9px;
-            border-radius: 0 0 0.4rem 0.4rem;
+            top: 1.5px;
+            height: 3px;
+            border-radius: 0.2rem;
         }
 
-        /* La muesca de la camara: una barrita centrada en la parte de arriba */
+        /* La muesca de la camara: una barrita centrada en la parte de arriba.
+           Vive dentro del bisel (el padding negro de .phone), sin invadir la
+           captura — asi funciona igual con capturas de fondo claro u oscuro. */
         .phone::before {
             content: "";
             position: absolute;
-            top: 10px;
+            top: 3px;
             left: 50%;
             transform: translateX(-50%);
             width: 33%;
-            height: 18px;
+            height: 6px;
             background: #0d0d0d;
-            border-radius: 0 0 0.75rem 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 0.4rem;
             z-index: 1;
         }
     </style>
